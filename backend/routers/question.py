@@ -1,8 +1,10 @@
-from fastapi import APIRouter, Body
-import aiohttp
-from backend.schemas.question import QuestionsNumberRequest, QuestionResponse
-from backend.database.methods import get_question, add_all_questions
 import datetime
+
+import aiohttp
+from fastapi import APIRouter, Body
+
+from backend.database.methods import add_all_questions, get_question
+from backend.schemas.question import QuestionResponse, QuestionsNumberRequest
 
 router = APIRouter()
 
@@ -22,8 +24,12 @@ async def add_questions(body: QuestionsNumberRequest = Body(...)) -> QuestionRes
                 question_db = await get_question(question_id=question["id"])
                 if question_db is None:
                     date_format = "%Y-%m-%dT%H:%M:%S.%fZ"
-                    question["created_at"] = datetime.datetime.strptime(question["created_at"], date_format)
-                    question["updated_at"] = datetime.datetime.strptime(question["updated_at"], date_format)
+                    question["created_at"] = datetime.datetime.strptime(
+                        question["created_at"], date_format
+                    )
+                    question["updated_at"] = datetime.datetime.strptime(
+                        question["updated_at"], date_format
+                    )
                     new_questions.append(QuestionResponse(**question))
             await add_all_questions(new_questions)
             questions_number = questions_number - len(new_questions)

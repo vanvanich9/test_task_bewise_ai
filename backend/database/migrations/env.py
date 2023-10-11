@@ -18,7 +18,8 @@ if config.config_file_name is not None:
 
 # Set database URI from .env file
 from backend.config import POSTGRES_URI
-config.set_main_option('sqlalchemy.url', POSTGRES_URI)
+
+config.set_main_option("sqlalchemy.url", POSTGRES_URI)
 
 
 # add your model's MetaData object here
@@ -26,6 +27,7 @@ config.set_main_option('sqlalchemy.url', POSTGRES_URI)
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
 from backend.database import models
+
 target_metadata = models.Base.metadata
 
 # other values from the config, defined by the needs of env.py,

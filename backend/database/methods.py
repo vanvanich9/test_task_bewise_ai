@@ -1,11 +1,10 @@
-from .models import Question
-from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.future import select
 
+from backend.config import POSTGRES_URI
 from backend.schemas.question import QuestionResponse
 
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
-from backend.config import POSTGRES_URI
+from .models import Question
 
 
 def get_session(coroutine):
