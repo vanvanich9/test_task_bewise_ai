@@ -17,6 +17,7 @@ services:
   application:
     depends_on:
       - db
+    command: bash -c "sleep 5 && alembic upgrade head && uvicorn backend.app:app --host 0.0.0.0 --port 4567"
     build:
       context: ../ # backend
       dockerfile: ./docker/application/Dockerfile
