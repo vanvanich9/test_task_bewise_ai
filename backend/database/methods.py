@@ -20,18 +20,14 @@ def get_session(coroutine):
 
 
 @get_session
-async def get_question(session: AsyncSession, question_id: int):
+async def get_question(session: AsyncSession, question_id: int) -> Question:
     stmt = select(Question).where(Question.id == question_id)
     result = await session.execute(stmt)
     return result.first()
 
 
 @get_session
-async def add_all_questions(session: AsyncSession, questions: list[QuestionResponse]):
-    questions_db = list()
-    for question in questions:
-        questions_db.append(Question(**question.model_dump()))
-
+async def add_all_questions(session: AsyncSession, questions: list[QuestionResponse]) -> None:
+    questions_db = [Question(**question.model_dump()) for question in questions]
     session.add_all(questions_db)
     await session.commit()
-    return questions_db

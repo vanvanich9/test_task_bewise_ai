@@ -10,10 +10,11 @@ router = APIRouter()
 
 
 @router.post("/add")
-async def add_questions(body: QuestionsNumberRequest = Body(...)) -> QuestionResponse:
+async def add_questions(body: QuestionsNumberRequest = Body(...)) -> QuestionResponse | dict:
     questions_number = body.questions_num
     new_questions: list[QuestionResponse] = []
     async with aiohttp.ClientSession() as session:
+        # Until the required number of questions have been added, request again
         while questions_number:
             new_questions.clear()
             url = "https://jservice.io/api/random"
@@ -21,6 +22,7 @@ async def add_questions(body: QuestionsNumberRequest = Body(...)) -> QuestionRes
             async with session.get(url, params=params) as resp:
                 received_questions: list[dict] = await resp.json(content_type=None)
             for question in received_questions:
+                # Checking for a question in the database
                 question_db = await get_question(question_id=question["id"])
                 if question_db is None:
                     date_format = "%Y-%m-%dT%H:%M:%S.%fZ"
@@ -32,5 +34,8 @@ async def add_questions(body: QuestionsNumberRequest = Body(...)) -> QuestionRes
                     )
                     new_questions.append(QuestionResponse(**question))
             await add_all_questions(new_questions)
+
+            # Calculate: the total number of questions needed minus the number of questions we added
+            # Save the new missing number of questions
             questions_number = questions_number - len(new_questions)
-    return new_questions[-1] if new_questions else QuestionResponse()
+    return new_questions[-1] if new_questions else {}

@@ -4,11 +4,11 @@ from pydantic import BaseModel
 
 
 class QuestionResponse(BaseModel):
-    id: int | None = None
-    question: str | None = None
-    answer: str | None = None
-    created_at: datetime.datetime | None = None
-    updated_at: datetime.datetime | None = None
+    id: int
+    question: str
+    answer: str
+    created_at: datetime.datetime
+    updated_at: datetime.datetime
 
     class Config:
         from_attributes = True
