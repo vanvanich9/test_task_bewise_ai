@@ -1,7 +1,8 @@
 # Пошаговая инструкция настройки и запуска веб-приложения
 
 ### Установка
-1. Все приложение развернуто в Docker, необходимо его установить. [Ubuntu](https://docs.docker.com/engine/install/ubuntu/), [Mac OS](https://docs.docker.com/desktop/install/mac-install/), [Windows](https://docs.docker.com/desktop/install/windows-install/)
+1. Все приложение развернуто в контейнерах Docker, устананавливаем его: [Ubuntu](https://docs.docker.com/engine/install/ubuntu/), [Linux (Docker Desktop)](https://docs.docker.com/desktop/install/linux-install/), [Mac OS (Docker Desktop)](https://docs.docker.com/desktop/install/mac-install/), [Windows (Docker Desktop)](https://docs.docker.com/desktop/install/windows-install/)
+2. Все эти контейнеры запускаются в надстройке `docker compose`, установим также его: [Плагин (для Ubuntu)](https://docs.docker.com/compose/install/linux/#install-using-the-repository), для Docker Desktop его устанавливать не требуется, он уже встроен.
 
 ### Настройка
 
