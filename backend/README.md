@@ -3,6 +3,8 @@
 ### Установка
 1. Все приложение развернуто в контейнерах Docker, устананавливаем его: [Ubuntu](https://docs.docker.com/engine/install/ubuntu/), [Linux (Docker Desktop)](https://docs.docker.com/desktop/install/linux-install/), [Mac OS (Docker Desktop)](https://docs.docker.com/desktop/install/mac-install/), [Windows (Docker Desktop)](https://docs.docker.com/desktop/install/windows-install/)
 2. Все эти контейнеры запускаются в надстройке `docker compose`, установим также его: [Плагин (для Ubuntu)](https://docs.docker.com/compose/install/linux/#install-using-the-repository), для Docker Desktop его устанавливать не требуется, он уже встроен.
+3. Для дальнейшей работы удобнее всего склонировать репозиторий, перед этим необходимо [установить git на компьютер](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+4. Клонируем репозиторий с помощью следующей команды в терминале/консоле: git clone https://github.com/vanvanich9/test_task_bewise_ai.git (перед этим перейдите в путь, в который хотите склонировать репозиторий)
 
 ### Настройка
 
