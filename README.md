@@ -4,7 +4,7 @@
 
 Инструкция по настройке и запуску находится в папке backend в [README](https://github.com/vanvanich9/test_task_bewise_ai/blob/dev/backend/README.md) файле
 
-## Стех технологий
+## Стек технологий
 
 ### База данных
 
