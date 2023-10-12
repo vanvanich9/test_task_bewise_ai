@@ -19,3 +19,29 @@
 3. Запускаем `./run.sh`. После этого на адресе 0.0.0.0 (для Windows ранее описано, как сменить на 127.0.0.1) под портом 5432 будет запущена PostgreSQL, а под 4567 ASGI сервер.
 
 Чтобы завершить работу, необходимо нажать `Control + C`
+
+### Примеры POST-запроса
+
+<i>Request</i>
+
+    POST http://0.0.0.0:4567/api/questions/add
+    questions_num=5
+
+<i>Response</i>
+
+    {
+        "id": 100538,
+        "question": "Gunmen after this South American dictator in 1986 used rockets, bazookas, rifles & grenades--& missed!",
+        "answer": "Pinochet",
+        "created_at": "2022-12-30T19:27:09.325000",
+        "updated_at": "2022-12-30T19:27:09.325000"
+    }
+
+<i>Request</i>
+
+    POST http://0.0.0.0:4567/api/questions/add
+    questions_num=0
+
+<i>Response</i>
+
+    {}
