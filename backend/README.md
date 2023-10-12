@@ -23,7 +23,7 @@
 
 <i>Request</i>
 
-    POST http://0.0.0.0:4567/api/questions/add
+    POST http://127.0.0.1:4567/api/questions/add
     questions_num=5
 
 <i>Response</i>
@@ -38,7 +38,7 @@
 
 <i>Request</i>
 
-    POST http://0.0.0.0:4567/api/questions/add
+    POST http://127.0.0.1:4567/api/questions/add
     questions_num=0
 
 <i>Response</i>
